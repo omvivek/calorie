@@ -1,11 +1,21 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "main.py",
-        "use": "@vercel/python"
-      }
-    ],
+  "version": 2,
+  "builds": [
+    {
+      "src": "calorie-frontend/package.json",
+      "use": "@vercel/react"
+    },
+    {
+      "src": "api/main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/get-calories",
+      "dest": "/api/main.py"
+    }
+  ],
     "env": {
       "OPENAI_API_KEY": "your-api-key-here"}
   }

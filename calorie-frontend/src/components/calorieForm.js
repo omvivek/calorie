@@ -12,7 +12,7 @@ const CalorieForm = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/get-calories/", {
+      const response = await fetch("https://calorie-7x6v09qnz-kolla-om-viveks-projects.vercel.app/get-calories/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
