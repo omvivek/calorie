@@ -7,6 +7,6 @@
       }
     ],
     "env": {
-      "OPENAI_API_KEY": ""    }
+      "OPENAI_API_KEY": "your-api-key-here"}
   }
   
