@@ -15,7 +15,7 @@ app = FastAPI()
 # Configure CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Allow requests from React app
+    allow_origins=["http://localhost:3000","https://calorie-7x6v09qnz-kolla-om-viveks-projects.vercel.app"],  # Allow requests from React app
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all HTTP headers
