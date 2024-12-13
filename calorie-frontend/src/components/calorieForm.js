@@ -11,8 +11,8 @@ const CalorieForm = () => {
     setLoading(true);
     setError(null);
 
-    try {
-      const response = await fetch("https://calorie-6il3ppvlu-kolla-om-viveks-projects.vercel.app/get-calories/", {
+    try { 
+      const response = await fetch("https://calorie-5cpjlo741-kolla-om-viveks-projects.vercel.app/get-calories/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
