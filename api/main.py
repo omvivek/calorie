@@ -6,38 +6,37 @@ from pydantic import BaseModel
 from openai import OpenAI
 import logging
 
-# Load environment variables
+
 load_dotenv()
 
-# Initialize FastAPI app
 app = FastAPI()
 
-# Configure CORS middleware
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow requests from React app
+    allow_origins=["http://localhost:3000"],  # Allow requests from React app
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all HTTP headers
+    allow_methods=["*"],  
+    allow_headers=["*"],  
 )
 
-# Initialize OpenAI client
+
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
-# Request model
+
 class FoodRequest(BaseModel):
     food_items: str
 
 
 @app.get("/")
 async def root():
-    """Root endpoint to test API availability."""
+    
     return {"message": "Welcome to the Calorie Estimation API!"}
 
 
 @app.post("/get-calories/")
 async def get_calories(request: FoodRequest):
-    """Endpoint to estimate calorie count for given food items."""
+   
     try:
         if not request.food_items.strip():
             raise HTTPException(
@@ -45,7 +44,7 @@ async def get_calories(request: FoodRequest):
                 detail="Food items input cannot be empty.",
             )
         
-        # Call OpenAI API for calorie estimation
+       
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -54,7 +53,7 @@ async def get_calories(request: FoodRequest):
             ],
         )
 
-        # Extract result
+        
         result = response['choices'][0]['message']['content'].strip()
         return {"calories": result}
 
