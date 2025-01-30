@@ -1,45 +1,23 @@
-import React, { useState } from "react";
-import "./App.css";
-import CheckCalories from "./components/CheckCalories";
-import AddFood from "./components/AddFood";
-import AllFoods from "./components/AllFoods";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Search from './components/Dashboard/Search';
+import History from './components/Dashboard/History';
+import Profile from './components/Dashboard/Profile';
+import Register from './components/Auth/Register';
+import Login from './components/Auth/Login';
+import LandingPage from './components/Auth/LandingPage';
 
-function App() {
-  const [activeTab, setActiveTab] = useState("check");
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Calorie Estimation</h1>
-        <nav className="nav-bar">
-          <button
-            className={activeTab === "check" ? "active-tab" : ""}
-            onClick={() => setActiveTab("check")}
-          >
-            Check Calories
-          </button>
-          <button
-            className={activeTab === "add" ? "active-tab" : ""}
-            onClick={() => setActiveTab("add")}
-          >
-            Add Food
-          </button>
-          <button
-            className={activeTab === "all" ? "active-tab" : ""}
-            onClick={() => setActiveTab("all")}
-          >
-            Get All Foods
-          </button>
-        </nav>
-
-        <main>
-          {activeTab === "check" && <CheckCalories />}
-          {activeTab === "add" && <AddFood />}
-          {activeTab === "all" && <AllFoods />}
-        </main>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/history" element={<History />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
+  </Router>
+);
 
 export default App;
